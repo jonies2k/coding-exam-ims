@@ -30,7 +30,7 @@ public class SubscriberService {
     public SubscriberDTO getSubscriberByPhoneNumber(String phoneNumber) {
 
         return Optional.ofNullable(subsRepo.getSubscriberByPhoneNumber(phoneNumber))
-                .map(this::convertToDto)
+                .map(this::convertToDTO)
                 .orElseThrow(() -> new RuntimeException("Phone number not found: " + phoneNumber));
     }
 
@@ -56,7 +56,7 @@ public class SubscriberService {
 
         Subscriber savedSubscriber = subsRepo.save(subscriber);
 
-        return convertToDto(savedSubscriber);
+        return convertToDTO(savedSubscriber);
     }
 
     @Transactional
@@ -69,7 +69,7 @@ public class SubscriberService {
     }
 
 
-    private SubscriberDTO convertToDto(Subscriber subscriber) {
+    private SubscriberDTO convertToDTO(Subscriber subscriber) {
         CallForwardNoReplyDTO callForwardNoReplyDTO = null;
 
         for (SubscriberFeature feature : subscriber.getFeatures()) {
