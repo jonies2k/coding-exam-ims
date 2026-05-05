@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMS Home Phone Subscriber Service</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <script src="js/ims-utils.js"></script>
+    <script src="js/subscriber-service.js"></script>
+    <div id="content"></div>
+
+    <script>
+        fetch("subscriber-page.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("content").innerHTML = html;
+
+                console.log("subscriber-page.html loaded");
+
+                initPage();
+            })
+            .catch(err => {
+                console.error("Error loading subscriber page:", err);
+            });
+    </script>
+</body>
+</html>
